@@ -1,0 +1,77 @@
+@import '../mixins';
+@import '../colors';
+#terminal {
+	font-family: 'Ubuntu Mono';
+	background-color: @dark-gray;
+
+	height: 600px;
+	width: 900px;
+	margin: 100px auto;
+	position: relative;
+
+	.top-border-radius();
+	.bottom-border-radius();
+
+	-webkit-transform: perspective(500px) rotateY(-5deg);
+	-moz-transform: perspective(500px) rotateY(-5deg);
+	-o-transform: perspective(500px) rotateY(-5deg);
+	transform: perspective(500px) rotateY(-5deg);
+
+	transition: transform 0.3s;
+
+	&:hover {
+		-webkit-transform: perspective(500px) rotateY(0deg);
+		-moz-transform: perspective(500px) rotateY(0deg);
+		-o-transform: perspective(500px) rotateY(0deg);
+		transform: perspective(500px) rotateY(0deg);
+	}
+
+	#titleBar {
+		position: absolute;
+		height: 30px;
+		width: 100%;
+		top: 0;
+		background-color: @light-gray;
+		border-bottom: 1px solid darken(@dark-gray, 15%);
+		.top-border-radius();
+	}
+
+	#titleBar .buttons {
+		.button {
+			width: 16px;
+			height: 16px;
+			border-radius: 50%;
+			margin: 7px 0px 0px 7px;
+
+			display: inline-block;
+			&.close {
+				background-color: @red;
+			}
+			&.minimize {
+				background-color: @orange;
+			}
+			&.maximize {
+				background-color: @green;
+			}
+		}
+	}
+
+	#window {
+		position: absolute;
+		top: 40px;
+		left: 10px;
+
+		span {
+			display: block;
+			font-size: 18px;
+			color: #fff;
+			text-shadow: 1px 1px 1px rgba(0,0,0, 0.5);
+			margin-bottom: 10px;
+		}
+
+		span:not(.output) {
+			color: darken(@dark-gray, 20%);
+			text-shadow: none;
+		}
+	}
+}
